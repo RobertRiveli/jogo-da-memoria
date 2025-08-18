@@ -1,0 +1,128 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+.conteudo-principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  background-color: beige;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  padding: 10px;
+  height: 50%;
+  max-width: 1024px;
+  width: 100%;
+}
+
+.titulo {
+  width: 200px;
+  text-align: center;
+  margin: 0px auto;
+}
+
+.titulo-grande {
+  font-size: 50px;
+  text-align: center;
+}
+
+.secao-jogar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.secao-cartas {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.carta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid white;
+  border-radius: 5px;
+
+  width: 55px;
+  height: 65px;
+  margin: 10px;
+}
+
+.carta.direita {
+  transform: rotate(10deg);
+}
+
+.carta.esquerda {
+  transform: rotate(-10deg);
+}
+
+.fundo-carta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.fundo-carta.vermelho {
+  background-color: rgb(186, 90, 218);
+}
+
+.fundo-carta.azul {
+  background-color: rgb(186, 90, 218);
+}
+
+.fundo-carta.verde {
+  background-color: rgba(157, 220, 61, 0.614);
+}
+
+.fundo-carta.roxo {
+  background-color: rgba(110, 56, 236, 0.626);
+}
+
+.circulo {
+  width: 60%;
+  height: 50%;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.quadrado {
+  width: 60%;
+  height: 50%;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.btn-jogar {
+  background-color: rgb(255, 180, 42);
+  width: 100px;
+  height: 50px;
+  box-shadow: 0px 3px 1px 1px rgba(253, 167, 6, 0.5);
+
+  border: solid 2px rgb(188, 123, 3);
+  border-radius: 30px;
+
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+}
