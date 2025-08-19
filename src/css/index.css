@@ -115,77 +115,19 @@ body {
 }
 
 .fundo-carta.vermelho {
-  background-color: rgb(186, 90, 218);
+  background-color: rgba(245, 33, 33, 0.779);
 }
 
 .fundo-carta.azul {
-  background-color: rgb(186, 90, 218);
+  background-color: rgba(38, 134, 245, 0.837);
 }
 
 .fundo-carta.verde {
-  background-color: rgba(157, 220, 61, 0.614);
+  background-color: rgba(148, 228, 26, 0.753);
 }
 
 .fundo-carta.roxo {
   background-color: rgba(110, 56, 236, 0.626);
-}
-
-.circulo {
-  width: 60%;
-  height: 50%;
-  border-radius: 50%;
-  background-color: white;
-}
-
-.quadrado {
-  width: 60%;
-  height: 50%;
-  border-radius: 3px;
-  background-color: white;
-}
-
-.estrela {
-  width: 60%;
-  height: 50%;
-  background-color: #ffd700;
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 30%
-  );
-  border-radius: 30%;
-}
-
-.coracao {
-  background-color: #fff;
-  height: 20px;
-  transform: rotate(-45deg);
-  width: 20px;
-  position: relative;
-}
-
-.coracao::before,
-.coracao::after {
-  content: "";
-  background-color: #fff;
-  border-radius: 50%;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
-
-.coracao::before {
-  top: -10px;
-}
-.coracao::after {
-  left: 10px;
 }
 
 .btn-jogar {

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/css/geral.css" />
+    <link rel="stylesheet" href="src/css/jogo.css" />
+
+    <title>Jogo da Memória</title>
+  </head>
+  <body>
+    <main class="principal">
+      <div class="informacoes">
+        <div>
+          <i class="fa-regular fa-clock" style="color: #f5c414"></i>
+          <span id="tempo">00:00</span>
+        </div>
+        <div>
+          <div class="estrela"></div>
+          <p><span id="acertos">0</span> Pares</p>
+        </div>
+        <div>
+          <div class="coracao"></div>
+          <p>x<span id="vida">3</span></p>
+        </div>
+      </div>
+      <section class="cartas"></section>
+
+      <div>
+        <button>Reiniciar</button>
+        <button>Menu</button>
+      </div>
+    </main>
+
+    <script src="src/js/jogo.js"></script>
+  </body>
+</html>
