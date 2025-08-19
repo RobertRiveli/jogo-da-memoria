@@ -1,0 +1,56 @@
+.quadrado {
+  width: 60%;
+  height: 50%;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.circulo {
+  width: 60%;
+  height: 50%;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.estrela {
+  width: 60%;
+  height: 50%;
+  background-color: #ffd700;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 30%
+  );
+}
+
+.coracao {
+  background-color: #fff;
+  height: 20px;
+  transform: rotate(-45deg);
+  width: 20px;
+  position: relative;
+}
+
+.coracao::before,
+.coracao::after {
+  content: "";
+  background-color: #fff;
+  border-radius: 50%;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.coracao::before {
+  top: -10px;
+}
+.coracao::after {
+  left: 10px;
+}
