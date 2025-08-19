@@ -1,7 +1,9 @@
-import { adicionarTexto } from "./utils.js";
+import { adicionarTexto, zeroEsquerda } from "./utils.js";
 import { criarCarta, embaralharCartas } from "./cartas.js";
 
-let tempo = 0;
+let tempoSegundos = 0;
+let tempoMinutos = 0;
+
 let bloqueio = false;
 let cartaUm;
 let cartaDois;
@@ -27,7 +29,17 @@ function iniciarJogor() {
   const tempoElemento = document.getElementById("tempo");
 
   const temporizador = setInterval(() => {
-    tempo++;
+    tempoSegundos++;
+
+    if (tempoSegundos === 60) {
+      tempoMinutos++;
+
+      tempoSegundos = 0;
+    }
+
+    const tempo = `${zeroEsquerda(tempoMinutos)}:${zeroEsquerda(
+      tempoSegundos
+    )}`;
 
     adicionarTexto(tempoElemento, tempo);
 
@@ -96,6 +108,8 @@ function iniciarJogor() {
 
             // Vira todas as cartas em caso de derrota
             if (vidas === 0) {
+              clearInterval(temporizador);
+
               const todasCartas = containerCartas.querySelectorAll(".virar");
               todasCartas.forEach((carta) => {
                 carta.classList.add("ativo");
