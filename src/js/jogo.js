@@ -1,18 +1,12 @@
-const containerCartas = document.querySelector(".cartas");
-
-const cartas = ["circulo", "quadrado", "estrela", "coracao"];
-const paresDeCartas = [...cartas, ...cartas];
-
-const acertosElemento = document.getElementById("acertos");
-const vidasElemento = document.getElementById("vida");
-const tempoElemento = document.getElementById("tempo");
+import { adicionarTexto } from "./utils.js";
+import { criarCarta, embaralharCartas } from "./cartas.js";
 
 let tempo = 0;
 let bloqueio = false;
 let cartaUm;
 let cartaDois;
 let paresAcertados = 0;
-
+let vitoria = false;
 let vidas = 3;
 
 function resetarCartas() {
@@ -21,107 +15,97 @@ function resetarCartas() {
   bloqueio = false;
 }
 
-function criarCarta(tipoCarta) {
-  const carta = document.createElement("div");
-  const acaoVirar = document.createElement("div");
-  const frente = document.createElement("div");
-  const verso = document.createElement("div");
-  const iconeCarta = document.createElement("div");
+function iniciarJogor() {
+  const containerCartas = document.querySelector(".cartas");
 
-  carta.classList.add("carta");
-  acaoVirar.classList.add("virar");
-  frente.classList.add("frente");
-  verso.classList.add("verso");
+  const cartas = ["circulo", "quadrado", "estrela", "coracao"];
+  const paresDeCartas = [...cartas, ...cartas];
+  const cartasAcertadas = [];
 
-  acaoVirar.appendChild(verso);
-  acaoVirar.appendChild(frente);
+  const acertosElemento = document.getElementById("acertos");
+  const vidasElemento = document.getElementById("vida");
+  const tempoElemento = document.getElementById("tempo");
 
-  iconeCarta.classList.add(tipoCarta);
-  frente.appendChild(iconeCarta);
-  carta.appendChild(acaoVirar);
-  carta.dataset.atributo = tipoCarta;
+  const temporizador = setInterval(() => {
+    tempo++;
 
-  return carta;
-}
+    adicionarTexto(tempoElemento, tempo);
 
-function embaralharCartas(array) {
-  let index = array.length,
-    indexAleatorio;
-
-  while (index !== 0) {
-    indexAleatorio = Math.floor(Math.random() * index);
-    index--;
-
-    [array[index], array[indexAleatorio]] = [
-      array[indexAleatorio],
-      array[index],
-    ];
-  }
-
-  return array;
-}
-
-const cartasEmbaralhadas = embaralharCartas(paresDeCartas);
-
-cartasEmbaralhadas.forEach((carta) => {
-  containerCartas.appendChild(criarCarta(carta));
-});
-
-containerCartas.addEventListener("click", (e) => {
-  if (bloqueio) return;
-  const el = e.target;
-
-  if (el.classList.contains("verso")) {
-    const virar = el.parentElement;
-    const cartaElemento = virar.parentElement;
-
-    if (!cartaUm) {
-      virar.classList.add("ativo");
-
-      cartaUm = cartaElemento;
-
-      console.log(cartaUm);
-    } else {
-      virar.classList.add("ativo");
-
-      cartaDois = cartaElemento;
-      bloqueio = true;
+    if (vitoria) {
+      clearInterval(temporizador);
     }
+  }, 1000);
 
-    if (cartaUm && cartaDois) {
-      // Verifica se as cartas são iguais
-      const tipoCartaUm = cartaUm.dataset.atributo;
-      const tipoCartaDois = cartaDois.dataset.atributo;
+  const cartasEmbaralhadas = embaralharCartas(paresDeCartas);
 
-      const saoIguais = tipoCartaUm === tipoCartaDois;
+  cartasEmbaralhadas.forEach((carta) => {
+    containerCartas.appendChild(criarCarta(carta));
+  });
 
-      console.log(saoIguais);
-      if (saoIguais) {
-        resetarCartas();
-        paresAcertados++;
-        acertosElemento.textContent = paresAcertados;
+  containerCartas.addEventListener("click", (e) => {
+    if (bloqueio) return;
+    const el = e.target;
+
+    if (el.classList.contains("verso")) {
+      const virar = el.parentElement;
+      const cartaElemento = virar.parentElement;
+
+      if (!cartaUm) {
+        virar.classList.add("ativo");
+
+        cartaUm = cartaElemento;
+
+        console.log(cartaUm);
       } else {
-        vidas--;
-        vidasElemento.textContent = vidas;
+        virar.classList.add("ativo");
 
-        const primeiraCarta = cartaUm.querySelector(".virar");
-        const segundaCarta = cartaDois.querySelector(".virar");
+        cartaDois = cartaElemento;
+        bloqueio = true;
+      }
 
-        // Mantém as cartas viradas por alguns segundos
-        setTimeout(() => {
-          primeiraCarta.classList.remove("ativo");
-          segundaCarta.classList.remove("ativo");
+      if (cartaUm && cartaDois) {
+        // Verifica se as cartas são iguais
+        const tipoCartaUm = cartaUm.dataset.atributo;
+        const tipoCartaDois = cartaDois.dataset.atributo;
+
+        const saoIguais = tipoCartaUm === tipoCartaDois;
+
+        console.log(saoIguais);
+        if (saoIguais) {
+          cartasAcertadas.push(cartaUm);
+          cartasAcertadas.push(cartaDois);
+
           resetarCartas();
+          paresAcertados++;
+          adicionarTexto(acertosElemento, paresAcertados);
 
-          // Vira todas as cartas em caso de derrota
-          if (vidas === 0) {
-            const todasCartas = containerCartas.querySelectorAll(".virar");
-            todasCartas.forEach((carta) => {
-              carta.classList.add("ativo");
-            });
-          }
-        }, 1500);
+          if (cartasAcertadas.length === cartasEmbaralhadas.length)
+            vitoria = true;
+        } else {
+          vidas--;
+          adicionarTexto(vidasElemento, vidas);
+
+          const primeiraCarta = cartaUm.querySelector(".virar");
+          const segundaCarta = cartaDois.querySelector(".virar");
+
+          // Mantém as cartas viradas por alguns segundos
+          setTimeout(() => {
+            primeiraCarta.classList.remove("ativo");
+            segundaCarta.classList.remove("ativo");
+            resetarCartas();
+
+            // Vira todas as cartas em caso de derrota
+            if (vidas === 0) {
+              const todasCartas = containerCartas.querySelectorAll(".virar");
+              todasCartas.forEach((carta) => {
+                carta.classList.add("ativo");
+              });
+            }
+          }, 1500);
+        }
       }
     }
-  }
-});
+  });
+}
+
+export default iniciarJogor;
