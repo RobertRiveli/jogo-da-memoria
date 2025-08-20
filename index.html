@@ -29,7 +29,7 @@
               </div>
             </div>
           </div>
-          <button class="btn-jogar">Jogar</button>
+          <button id="btn-jogo" class="btn-jogar">Jogar</button>
           <div class="secao-cartas">
             <div class="carta direita">
               <div class="fundo-carta verde">
@@ -43,14 +43,18 @@
             </div>
           </div>
         </div>
+
+        <dialog id="modal-modos">
+          <div class="modos">
+            <h3>Escolha a <span> Dificuldade </span></h3>
+
+            <button class="btn facil"><span>Fácil</span></button>
+            <button class="btn medio"><span>Médio</span></button>
+            <button class="btn dificil"><span>Difícil </span></button>
+          </div>
+        </dialog>
       </div>
     </main>
-    <dialog>
-      <div>
-        <button>Fácil</button>
-        <button>Normal</button>
-        <button>Difícil</button>
-      </div>
-    </dialog>
+    <script src="src/js/index.js"></script>
   </body>
 </html>
