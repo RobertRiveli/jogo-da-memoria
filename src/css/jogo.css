@@ -12,8 +12,15 @@ body {
 }
 
 .principal {
+  height: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
+
+  max-width: 450px;
+  margin: 0px auto;
+  width: 100%;
 }
 
 .cartas {
@@ -22,9 +29,6 @@ body {
   padding: 10px;
 
   flex-wrap: wrap;
-  max-width: 600px;
-
-  margin: 0px auto;
 }
 
 .carta {
@@ -49,6 +53,8 @@ body {
 
 .carta .verso {
   background-color: purple;
+
+  background-color: rgb(243, 107, 61);
 }
 
 .carta .frente {
@@ -79,7 +85,7 @@ body {
   align-items: center;
 
   gap: 10px;
-  padding: 10px 0px;
+  padding: 10px 10px;
 
   width: 280px;
   background-color: rgb(255, 210, 127);
@@ -118,4 +124,42 @@ body {
   margin-right: 2px;
   width: 30px;
   height: 30px;
+}
+
+.informacoes .relogio {
+  margin-right: 5px;
+  font-size: 25px;
+}
+
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: space-evenly;
+  align-items: center;
+
+  max-width: 300px;
+  width: 100%;
+}
+
+.btn {
+  width: 130px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+  padding: 12px 0px;
+
+  background-color: rgb(255, 210, 127);
+  margin: 10px auto;
+  border-radius: 30px;
+
+  box-shadow: 0px 0px 2px 1px rgb(196, 59, 59);
+  border: 1px solid rgb(243, 131, 50);
+  font-size: 16px;
+
+  color: #573d19;
+  font-weight: 700;
 }

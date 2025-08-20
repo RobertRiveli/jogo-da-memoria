@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/css/geral.css" />
     <link rel="stylesheet" href="src/css/jogo.css" />
+    <script
+      src="https://kit.fontawesome.com/de3865ba5d.js"
+      crossorigin="anonymous"
+    ></script>
 
     <title>Jogo da Memória</title>
   </head>
@@ -12,7 +16,10 @@
     <main class="principal">
       <div class="informacoes">
         <div>
-          <i class="fa-regular fa-clock" style="color: #f5c414"></i>
+          <i
+            class="fa-regular fa-clock relogio"
+            style="color: hsl(47, 96%, 42%)"
+          ></i>
           <span id="tempo">00:00</span>
         </div>
         <div>
@@ -26,9 +33,13 @@
       </div>
       <section class="cartas"></section>
 
-      <div>
-        <button>Reiniciar</button>
-        <button>Menu</button>
+      <div class="botoes">
+        <button class="btn-reiniciar btn">
+          <i class="fa-solid fa-rotate-right"></i> Reiniciar
+        </button>
+        <button class="btn-menu btn">
+          <i class="fa-solid fa-house" style="color: #573d19"></i> Menu
+        </button>
       </div>
     </main>
 
