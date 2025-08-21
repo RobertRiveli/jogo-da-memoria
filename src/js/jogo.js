@@ -1,4 +1,4 @@
-import { adicionarTexto, zeroEsquerda } from "./utils.js";
+import { adicionarTexto, zeroEsquerda, exibirModal } from "./utils.js";
 import { criarCarta, embaralharCartas } from "./cartas.js";
 
 let tempoSegundos = 0;
@@ -27,6 +27,10 @@ function iniciarJogor() {
   const acertosElemento = document.getElementById("acertos");
   const vidasElemento = document.getElementById("vida");
   const tempoElemento = document.getElementById("tempo");
+  const modalMensagem = document.getElementById("modal-mensagem");
+  const noticiaModal = document.getElementById("noticia");
+  const tempoConclusao = document.getElementById("tempo-conclusao");
+  const acertosConclusao = document.getElementById("acertos-conclusao");
 
   const temporizador = setInterval(() => {
     tempoSegundos++;
@@ -67,13 +71,15 @@ function iniciarJogor() {
 
         cartaUm = cartaElemento;
 
-        console.log(cartaUm);
-      } else {
-        virar.classList.add("ativo");
-
-        cartaDois = cartaElemento;
-        bloqueio = true;
+        return;
       }
+
+      if (cartaUm === cartaElemento) return;
+
+      virar.classList.add("ativo");
+
+      cartaDois = cartaElemento;
+      bloqueio = true;
 
       if (cartaUm && cartaDois) {
         // Verifica se as cartas são iguais
@@ -82,17 +88,33 @@ function iniciarJogor() {
 
         const saoIguais = tipoCartaUm === tipoCartaDois;
 
-        console.log(saoIguais);
         if (saoIguais) {
-          cartasAcertadas.push(cartaUm);
-          cartasAcertadas.push(cartaDois);
+          cartasAcertadas.push(cartaUm, cartaDois);
 
-          resetarCartas();
+          setTimeout(() => {
+            resetarCartas();
+          }, 1500);
+
           paresAcertados++;
           adicionarTexto(acertosElemento, paresAcertados);
 
-          if (cartasAcertadas.length === cartasEmbaralhadas.length)
+          if (cartasAcertadas.length === cartasEmbaralhadas.length) {
             vitoria = true;
+
+            adicionarTexto(noticiaModal, "Você Venceu!");
+            adicionarTexto(
+              tempoConclusao,
+              `Tempo: ${zeroEsquerda(tempoMinutos)}:${zeroEsquerda(
+                tempoSegundos
+              )}`
+            );
+            adicionarTexto(
+              acertosConclusao,
+              `Pares: ${cartasAcertadas.length / 2} de 4`
+            );
+
+            exibirModal(modalMensagem, 1500);
+          }
         } else {
           vidas--;
           adicionarTexto(vidasElemento, vidas);
@@ -114,8 +136,22 @@ function iniciarJogor() {
               todasCartas.forEach((carta) => {
                 carta.classList.add("ativo");
               });
+
+              exibirModal(modalMensagem, 1500);
             }
           }, 1500);
+
+          adicionarTexto(noticiaModal, "Você Perdeu!");
+          adicionarTexto(
+            tempoConclusao,
+            `Tempo: ${zeroEsquerda(tempoMinutos)}:${zeroEsquerda(
+              tempoSegundos
+            )}`
+          );
+          adicionarTexto(
+            acertosConclusao,
+            `Pares: ${cartasAcertadas.length / 2} de 4`
+          );
         }
       }
     }

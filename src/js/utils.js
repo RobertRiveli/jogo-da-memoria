@@ -10,4 +10,10 @@ function zeroEsquerda(numero) {
   return numero;
 }
 
-export { adicionarTexto, zeroEsquerda };
+function exibirModal(modal, tempo) {
+  setTimeout(() => {
+    modal.showModal();
+  }, tempo);
+}
+
+export { adicionarTexto, zeroEsquerda, exibirModal };

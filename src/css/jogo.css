@@ -161,5 +161,52 @@ body {
   font-size: 16px;
 
   color: #573d19;
+
   font-weight: 700;
+}
+
+.btn a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: inherit;
+
+  text-decoration: none;
+
+  width: 100%;
+  color: inherit;
+}
+
+#modal-mensagem {
+  position: absolute;
+
+  border: none;
+  border-radius: 20px;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 250px;
+  padding: 20px 10px;
+  background-color: rgb(255, 210, 127);
+
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  gap: 10px;
+}
+
+.modal .botoes {
+  flex-direction: column;
+}
+
+.modal .btn {
+  width: 160px;
 }

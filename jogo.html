@@ -35,12 +35,40 @@
 
       <div class="botoes">
         <button class="btn-reiniciar btn">
-          <i class="fa-solid fa-rotate-right"></i> Reiniciar
+          <a href="jogo.html">
+            <i class="fa-solid fa-rotate-right"></i> Reiniciar
+          </a>
         </button>
         <button class="btn-menu btn">
-          <i class="fa-solid fa-house" style="color: #573d19"></i> Menu
+          <a href="index.html">
+            <i class="fa-solid fa-house" style="color: #573d19"></i> Menu</a
+          >
         </button>
       </div>
+
+      <dialog id="modal-mensagem">
+        <div class="modal">
+          <h2 id="noticia">Você Venceu</h2>
+
+          <div>
+            <p id="tempo-conclusao">Tempo</p>
+            <p id="acertos-conclusao">Pares: 8 de 8</p>
+          </div>
+          <div class="botoes">
+            <button class="btn-reiniciar btn">
+              <a href="jogo.html">
+                <i class="fa-solid fa-rotate-right"></i> Jogar de novo
+              </a>
+            </button>
+            <button class="btn-menu btn">
+              <a href="index.html"
+                ><i class="fa-solid fa-house" style="color: #573d19"></i>Voltar
+                ao menu</a
+              >
+            </button>
+          </div>
+        </div>
+      </dialog>
     </main>
 
     <script type="module" src="src/js/main.js"></script>
