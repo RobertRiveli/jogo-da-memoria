@@ -9,7 +9,8 @@ let cartaUm;
 let cartaDois;
 let paresAcertados = 0;
 let vitoria = false;
-let vidas = 3;
+let vidas;
+let cartas = [];
 
 function resetarCartas() {
   cartaUm = null;
@@ -17,10 +18,40 @@ function resetarCartas() {
   bloqueio = false;
 }
 
-function iniciarJogor() {
+function iniciarJogor(modo) {
   const containerCartas = document.querySelector(".cartas");
 
-  const cartas = ["circulo", "quadrado", "estrela", "coracao"];
+  if (modo === "facil") {
+    cartas = ["circulo", "quadrado", "estrela", "coracao"];
+    vidas = 3;
+  }
+
+  if (modo === "medio") {
+    cartas = [
+      "circulo",
+      "quadrado",
+      "estrela",
+      "coracao",
+      "trapezio",
+      "triangulo",
+    ];
+    vidas = 4;
+  }
+
+  if (modo === "dificil") {
+    cartas = [
+      "circulo",
+      "quadrado",
+      "estrela",
+      "coracao",
+      "trapezio",
+      "triangulo",
+      "pentagono",
+      "lua",
+    ];
+    vidas = 5;
+  }
+
   const paresDeCartas = [...cartas, ...cartas];
   const cartasAcertadas = [];
 
@@ -31,6 +62,7 @@ function iniciarJogor() {
   const noticiaModal = document.getElementById("noticia");
   const tempoConclusao = document.getElementById("tempo-conclusao");
   const acertosConclusao = document.getElementById("acertos-conclusao");
+  const btnReiniciar = document.querySelectorAll(".btn-reiniciar");
 
   const temporizador = setInterval(() => {
     tempoSegundos++;
@@ -53,6 +85,12 @@ function iniciarJogor() {
   }, 1000);
 
   const cartasEmbaralhadas = embaralharCartas(paresDeCartas);
+
+  btnReiniciar.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      window.location.reload();
+    });
+  });
 
   cartasEmbaralhadas.forEach((carta) => {
     containerCartas.appendChild(criarCarta(carta));
@@ -150,7 +188,7 @@ function iniciarJogor() {
           );
           adicionarTexto(
             acertosConclusao,
-            `Pares: ${cartasAcertadas.length / 2} de 4`
+            `Pares: ${cartasAcertadas.length / 2} de ${cartas.length}`
           );
         }
       }

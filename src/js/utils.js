@@ -16,4 +16,12 @@ function exibirModal(modal, tempo) {
   }, tempo);
 }
 
-export { adicionarTexto, zeroEsquerda, exibirModal };
+function dificuldadeJogo() {
+  const url = new URLSearchParams(window.location.search);
+
+  const modo = url.get("modo");
+
+  return modo;
+}
+
+export { adicionarTexto, zeroEsquerda, exibirModal, dificuldadeJogo };

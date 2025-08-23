@@ -1,5 +1,8 @@
 import iniciarJogor from "./jogo.js";
+import { dificuldadeJogo } from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  iniciarJogor();
+  const modo = dificuldadeJogo();
+
+  iniciarJogor(modo);
 });
