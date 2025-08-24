@@ -5,7 +5,7 @@
 }
 
 body {
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
 
   background: linear-gradient(130deg, rgb(237, 174, 57), rgb(235, 192, 113));
@@ -25,7 +25,7 @@ body {
 
 .cartas {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   padding: 10px;
 
   flex-wrap: wrap;
@@ -162,18 +162,6 @@ body {
 
   font-weight: 700;
   cursor: pointer;
-}
-
-.btn a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: inherit;
-
-  text-decoration: none;
-
-  width: 100%;
-  color: inherit;
 }
 
 #modal-mensagem {

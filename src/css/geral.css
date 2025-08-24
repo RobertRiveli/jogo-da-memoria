@@ -1,3 +1,15 @@
+.btn a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: inherit;
+
+  text-decoration: none;
+
+  width: 100%;
+  color: inherit;
+}
+
 .quadrado {
   width: 60%;
   height: 50%;
