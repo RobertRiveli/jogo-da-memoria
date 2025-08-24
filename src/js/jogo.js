@@ -47,7 +47,7 @@ function iniciarJogor(modo) {
       "trapezio",
       "triangulo",
       "pentagono",
-      "lua",
+      "ovo",
     ];
     vidas = 5;
   }

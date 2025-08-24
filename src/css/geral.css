@@ -51,6 +51,37 @@
 .coracao::before {
   top: -10px;
 }
+
 .coracao::after {
   left: 10px;
+}
+
+.triangulo {
+  width: 60%;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 30px solid #fff;
+}
+
+.pentagono {
+  width: 60%;
+  height: 50%;
+  background: #fff;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+.trapezio {
+  width: 60%;
+  height: 50%;
+  background: #fff;
+  clip-path: polygon(20% 0, 80% 0, 100% 100%, 0% 100%);
+}
+
+.ovo {
+  display: block;
+  width: 60%;
+  height: 65%;
+  background-color: #fff;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
 }

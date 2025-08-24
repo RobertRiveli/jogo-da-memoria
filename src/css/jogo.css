@@ -52,13 +52,11 @@ body {
 }
 
 .carta .verso {
-  background-color: purple;
-
   background-color: rgb(243, 107, 61);
 }
 
 .carta .frente {
-  background-color: rgba(0, 0, 255, 0.619);
+  background-color: rgba(0, 0, 255);
   display: flex;
   align-items: center;
   justify-content: center;
